@@ -42,7 +42,7 @@ Setting neetwork configuration sesuai dengan Prefix IP dari kelompok C13 yaitu `
 ##### Setelah itu buat subdomain super.franky.yyy.com dengan alias www.super.franky.yyy.com yang diatur DNS nya di EniesLobby dan mengarah ke Skypie. 
 
 #### Node EniesLobby
-- Ketik ```vim ``` untuk mengedit file, lalu ubah konfigurasi menjadi gambar dibawah dan isi IP dengan IP Skypie ```192.190.2.4```.
+- Ketik ```vim /etc/bind/kaizoku/franky.C13.com``` untuk mengedit file ```/etc/bind/kaizoku/franky.C13.com```, lalu ubah konfigurasi menjadi gambar dibawah dan isi IP dengan IP Skypie ```192.190.2.4```.
 - Restart service bind9 dengan perintah ```service bind9 restart```
 
 #### Node Loguetown/Alabasta
@@ -52,8 +52,8 @@ Setting neetwork configuration sesuai dengan Prefix IP dari kelompok C13 yaitu `
 ##### Buat juga reverse domain untuk domain utama.
 
 #### Node EniesLobby
-- Edit file ```named.conf.local``` dengan perintah ```vim ``` lalu ubah konfigurasi seperti gambar dibawah ini.
-- Copy file ```db.local``` ke dalam folder kaizoku yang telah dibuat dan ubah namanya menjadi ```2.190.192.in-addr.arpa``` dengan cara mengetikkan perintah ```cp ```. ```2.190.192``` merupakan 3 byte pertama yang dibalik dari IP Address Enieslobby.
+- Edit file ```named.conf.local``` dengan perintah ```vim /etc/bind/named.conf.local``` lalu ubah konfigurasi seperti gambar dibawah ini.
+- Copy file ```db.local``` ke dalam folder kaizoku yang telah dibuat dan ubah namanya menjadi ```2.190.192.in-addr.arpa``` dengan cara mengetikkan perintah ```cp /etc/bind/db.local /etc/bind/kaizoku/2.190.192.in-addr.arpa```. ```2.190.192``` merupakan 3 byte pertama yang dibalik dari IP Address Enieslobby.
 - Kemudian edit file ```2.190.192.in-addr.arpa``` dan ubah konfigurasinya menjadi seperti gambar dibawah.
 - Restart bind9.
 
@@ -66,12 +66,12 @@ Setting neetwork configuration sesuai dengan Prefix IP dari kelompok C13 yaitu `
 ##### Supaya tetap bisa menghubungi Franky jika server EniesLobby rusak, maka buat Water7 sebagai DNS Slave untuk domain utama.
 
 #### Node EniesLobby
-- Edit file ```named.conf.local``` dengan perintah ```vim ``` lalu ubah konfigurasi seperti gambar dibawah ini.
+- Edit file ```named.conf.local``` dengan perintah ```vim /etc/bind/named.conf.local``` lalu ubah konfigurasi seperti gambar dibawah ini.
 - Restart bind9
 
 #### Node Water7
 - Melakukan update ```apt-get update``` dan install bind9 ```apt-get install bind9 -y```
-- Edit file ```named.conf.local``` dengan perintah ```vim ``` lalu ubah konfigurasi seperti gambar dibawah ini.
+- Edit file ```named.conf.local``` dengan perintah ```vim /etc/bind/named.conf.local``` lalu ubah konfigurasi seperti gambar dibawah ini.
 - Restart bind9.
 - Untuk cek apakah konfigurasi berhasil, maka bind9 pada node EniesLobby harus di stop dengan perintah ```service bind9 stop```
 
@@ -82,12 +82,51 @@ Setting neetwork configuration sesuai dengan Prefix IP dari kelompok C13 yaitu `
 ## Soal 6
 ##### Setelah itu terdapat subdomain mecha.franky.yyy.com dengan alias www.mecha.franky.yyy.com yang didelegasikan dari EniesLobby ke Water7 dengan IP menuju ke Skypie dalam folder sunnygo.
 
+#### Node EniesLobby
+- Edit file ```/etc/bind/kaizoku/franky.C13.com``` dengan perintah ```vim /etc/bind/kaizoku/franky.C13.com``` lalu ubah konfigurasi seperti gambar dibawah ini.
+- Edit file ```named.conf.options``` dengan perintah ```vim /etc/bind/named.conf.options```.
+- Comment pada baris ```dnssec-validation auto;``` dan menambahkan baris berikut ```allow-query{any;};``` dibawahnya.
+- Edit file ```named.conf.local``` dengan perintah ```vim /etc/bind/named.conf.local``` lalu ubah konfigurasi seperti gambar dibawah ini.
+- Restart bind9.
+
+#### Node Water7
+- Edit file ```named.conf.options``` dengan perintah ```vim /etc/bind/named.conf.options```.
+- Comment pada baris ```dnssec-validation auto;``` dan menambahkan baris berikut ```allow-query{any;};``` dibawahnya.
+- Edit file ```named.conf.local``` dengan perintah ```/etc/bind/named.conf.local``` lalu ubah konfigurasi seperti gambar dibawah ini.
+- Membuat direktori baru dengan nama sesuai yang akan didelegasikan, lalu copy ```db.local``` ke direktori yang baru dibuat dan mengubah namanya menjadi ```mecha.franky.C13.com``` dengan perintah ```mkdir sunnygo``` dan ```cp /etc/bind/db.local /etc/bind/sunnygo/mecha.franky.C13.com```.
+- Edit file ```mecha.franky.C13.com``` lalu ubah konfigurasi seperti gambar dibawah ini.
+- Restart bind9.
+
+#### Node Loguetown/Alabasta
+- cek apakah konfigurasi berhasil dengan ```ping mecha.franky.C13.com```
 
 ## Soal 7
 ##### Untuk memperlancar komunikasi Luffy dan rekannya, dibuatkan subdomain melalui Franky dengan nama general.mecha.frank.yyy.com dengan alias www.general.mecha.franky.yyy.com yang mengarah ke Skypie.
 
+#### Node Water7
+- Edit file ```/etc/bind/sunnygo/mecha.franky.C13.com``` dengan perintah ```vim /etc/bind/sunnygo/mecha.franky.C13.com``` lalu ubah konfigurasi seperti gambar dibawah ini.
+- Restart bind9.
+
+#### Node Loguetown/Alabasta
+- Cek apakah konfigurasi berhasil dengan ```ping general.mecha.franky.C13.com```
+
 ## Soal 8
 ##### Setelah melakukan konfigurasi server, maka dilakukan konfigurasi Webserver. Pertama dengan webserver www.franky.yyy.com. Pertama, luffy membutuhkan webserver dengan DocumentRoot pada /var/www/franky.yyy.com.
+
+#### Node Skypie
+
+- Install Apache2 dan PHP dengan perintah ```apt-get install apache2``` dan ```apt-get install php```
+- Pindah ke direktori ```vim ``` untuk membuat web server baru dengan nama ```franky.C13.com```.
+- Edit file default pada direktori ```/etc/apache2/sites-available``` dengan mengubah ```DocumentRoot``` dan menambahkan ```ServerAlias``` dan ```ServerName```.
+- Pindah direktori ke ```/var/www/``` lalu download file yang akan ditampilkan dengan cara ```wget [link download]```, sebelumnya install dahulu ```apt-get install wget```.
+- Unzip file yang telah didownload dengan perintah ```unzip franky.zip```, sebelumnya install dahulu ```apt-get install unzip```.
+- Setelah itu file yang telah di unzip dipindahkan ke direktori yang telah ditetapkan yaitu ```/var/www/franky.C13.com/```.
+- Mengaktifkan konfigurasi website dengan perintah ```a2ensite franky.C13.com```.
+- Restart Apache2
+
+#### Node Loguetown/Alabasta
+- Install lynx untuk menampilkan isi dari file yang telah didownload dengan cara ```apt-get install lynx```
+- Ketik ```lynx www.franky.C13.com``` untuk mengakses web tersebut.
 
 ## Soal 9
 ##### Setelah itu, Luffy juga membutuhkan agar url www.franky.yyy.com/index.php/home dapat menjadi menjadi www.franky.yyy.com/home.
