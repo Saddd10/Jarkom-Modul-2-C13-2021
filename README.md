@@ -34,9 +34,17 @@ Setting neetwork configuration sesuai dengan Prefix IP dari kelompok C13 yaitu `
 ##### Luffy ingin menghubungi Franky yang berada di EniesLobby dengan denden mushi. Kalian diminta Luffy untuk membuat website utama dengan mengakses franky.yyy.com dengan alias www.franky.yyy.com pada folder kaizoku.
 
 #### Node EniesLobby
-- dadsa
-- dsada
-- dasda
+- Lakukan update dengan ```apt-get update```
+- Install bind9 dengan perintah ```apt-get install bind9 -y```
+- Edit file dengan perintah ```vim /etc/bind/named.conf.local``` lalu tambahkan kode berikut serta memberi alias ```www```.
+- Membuat direktori baru sesuai dengan soal dengan cara ```mkdir /etc/bind/kaizoku```
+- Copy file ```db.local``` ke direktori yang baru dibuat dan ubah namanya sesuai domain yang diinginkan ```cp /etc/bind/db.local /etc/bind/kaizoku/franky.C13.com```.
+- Edit file ```franky.C13.com``` dengan perintah ```vim /etc/bind/kaizoku/franky.C13.com```.
+- Restart bind9.
+
+#### Node Loguetown/Alabasta
+- Ubah settingan nameserver pada file ```/etc/resolv.conf``` sesuai gambar dibawah ini.
+- Cek domain ```franky.C13.com``` dengan perintah ```ping franky.C13.com```.
 
 ## Soal 3
 ##### Setelah itu buat subdomain super.franky.yyy.com dengan alias www.super.franky.yyy.com yang diatur DNS nya di EniesLobby dan mengarah ke Skypie. 
