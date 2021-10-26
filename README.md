@@ -124,7 +124,7 @@ Setting neetwork configuration sesuai dengan Prefix IP dari kelompok C13 yaitu `
 #### Node Skypie
 
 - Install Apache2 dan PHP dengan perintah ```apt-get install apache2``` dan ```apt-get install php```
-- Pindah ke direktori ```vim ``` untuk membuat web server baru dengan nama ```franky.C13.com```.
+- Pindah ke direktori ```/etc/apache2/sites-available``` untuk membuat web server baru dengan nama ```franky.C13.com```.
 - Edit file default pada direktori ```/etc/apache2/sites-available``` dengan mengubah ```DocumentRoot``` dan menambahkan ```ServerAlias``` dan ```ServerName```.
 - Pindah direktori ke ```/var/www/``` lalu download file yang akan ditampilkan dengan cara ```wget [link download]```, sebelumnya install dahulu ```apt-get install wget```.
 - Unzip file yang telah didownload dengan perintah ```unzip franky.zip```, sebelumnya install dahulu ```apt-get install unzip```.
@@ -139,26 +139,89 @@ Setting neetwork configuration sesuai dengan Prefix IP dari kelompok C13 yaitu `
 ## Soal 9
 ##### Setelah itu, Luffy juga membutuhkan agar url www.franky.yyy.com/index.php/home dapat menjadi menjadi www.franky.yyy.com/home.
 
+#### Node Skypie
+- Edit file ```default``` pada direktori ```franky.C13.com``` lalu tambahkan ```Alias``` seperti gambar dibawah.
+- Mengaktifkan konfigurasi website dengan perintah ```a2ensite franky.C13.com```.
+- Restart Apache2.
+
+#### Node Loguetown/Alabasta
+- Ketik ```lynx www.franky.C13.com/home``` untuk mengakses web tersebut.
+
 ## Soal 10
 ##### Setelah itu, pada subdomain www.super.franky.yyy.com, Luffy membutuhkan penyimpanan aset yang memiliki DocumentRoot pada /var/www/super.franky.yyy.com.
+
+#### Node Skypie
+- Copy file default menjadi file baru dengan nama sesuai domain pada soal ```super.franky.C13.com``` di direktori ```/etc/apache2/sites-available```
+- Edit file ```super.franky.C13.com``` pada direktori ```/etc/apache2/sites-available``` dengan mengubah ```DocumentRoot``` dan menambahkan ```ServerAlias``` dan ```ServerName```.
+- Pindah direktori ke ```/var/www/``` lalu download file yang akan ditampilkan dengan cara ```wget [link download]```.
+- Unzip file yang telah didownload dengan perintah ```unzip super.franky.zip```.
+- Setelah itu file yang telah di unzip dipindahkan ke direktori yang telah ditetapkan yaitu ```/var/www/super.franky.C13.com/```.
+- Mengaktifkan konfigurasi website dengan perintah ```a2ensite super.franky.C13.com```.
+- Restart Apache2
+
+#### Node Loguetown/Alabasta
+- Ketik ```lynx www.super.franky.C13.com``` untuk mengakses web tersebut.
 
 ## Soal 11
 ##### Akan tetapi, pada folder /public, Luffy ingin hanya dapat melakukan directory listing saja.
 
+#### Node Skypie
+- Edit file ```super.franky.C13.com``` pada direktori ```/etc/apache2/sites-available``` dengan menambahkan sesuai gambar dibawah.
+- Mengaktifkan konfigurasi website dengan perintah ```a2ensite super.franky.C13.com```.
+- Restart Apache2.
+
+#### Node Loguetown/Alabasta
+- Cek apakah directory listing berhasil dengan cara akses link ```www.super.franky.C13.com/public```.
+
 ## Soal 12
 ##### Tidak hanya itu, Luffy juga menyiapkan error file 404.html pada folder /errors untuk mengganti error kode pada apache.
+
+#### Node Skypie
+- Edit file ```super.franky.C13.com``` pada direktori ```/etc/apache2/sites-available``` dengan menambahkan ```ErrorDocument``` sesuai gambar dibawah.
+- Mengaktifkan konfigurasi website dengan perintah ```a2ensite super.franky.C13.com```.
+- Restart Apache2.
 
 ## Soal 13
 ##### Luffy juga meminta Nami untuk dibuatkan konfigurasi virtual host. Virtual host ini bertujuan untuk dapat mengakses file asset www.super.franky.yyy.com/public/js menjadi www.super.franky.yyy.com/js.
 
+#### Node Skypie
+- Edit file ```super.franky.C13.com``` pada direktori ```/etc/apache2/sites-available``` dengan menambahkan sesuai gambar dibawah.
+- Mengaktifkan konfigurasi website dengan perintah ```a2ensite super.franky.C13.com```.
+- Restart Apache2.
+
+#### Node Loguetown/Alabasta
+- Ketika mengakses alamat ```www.super.franky.yyy.com/public/js``` akan diarahkan ke alamat ```www.super.franky.yyy.com/js```
+
 ## Soal 14
 ##### Dan Luffy meminta untuk web www.general.mecha.franky.yyy.com hanya bisa diakses dengan port 15000 dan port 15500.
+
+#### Node Skypie
+- Copy file default menjadi file baru dengan nama sesuai domain pada soal ```general.mecha.franky.C13.com``` di direktori ```/etc/apache2/sites-available```.
+- Edit file ```general.mecha.franky.C13.com``` pada direktori ```/etc/apache2/sites-available``` dengan mengubah ```VirtualHost``` dan ```DocumentRoot``` serta menambahkan ```ServerAlias``` dan ```ServerName```.
+- Membuat folder baru bernama ```general.mecha.franky.C13.com``` pada direktori ```/var/www/```
+- Pindah direktori ke ```/var/www/``` lalu download file yang akan ditampilkan dengan cara ```wget [link download]```.
+- Unzip file yang telah didownload dengan perintah ```unzip general.mecha.franky.zip```.
+- Setelah itu file yang telah di unzip dipindahkan ke direktori yang telah ditetapkan yaitu ```/var/www/general.mecha.franky.C13.com/```.
+- Mengaktifkan port 15000 dan 15500 pada file ```/etc/apache2/ports.conf```.
+- Mengaktifkan konfigurasi website dengan perintah ```a2ensite general.mecha.franky.C13.com```.
+- Restart Apache2.
+
+#### Node Loguetown/Alabasta
+- Cek konfigurasi apakah telah berhasil dengan cara ```lynx general.mecha.franky.C13.com.pw:15000``` dan ```lynx general.mecha.franky.C13.com.pw:15500```
 
 ## Soal 15
 ##### Dengan authentikasi username luffy dan password onepiece dan file di /var/www/general.mecha.franky.yyy.
 
 ## Soal 16
 ##### Dan setiap kali mengakses IP EniesLobby akan diahlikan secara otomatis ke www.franky.yyy.com.
+
+#### Node Skypie
+- Edit file default pada direktori ```/etc/apache2/sites-available``` dengan mengarahkan ```DocumentRoot``` ke ```/var/www/franky.C13.com``` seperti gambar dibawah ini.
+- Mengaktifkan konfigurasi website dengan perintah ```a2ensite franky.C13.com```.
+- Restart Apache2.
+
+#### Node Loguetown/Alabasta
+- Ketika mengakses ```192.190.2.2``` akan diarahkan menuju website ```franky.C13.com```
 
 ## Soal 17
 ##### Dikarenakan Franky juga ingin mengajak temannya untuk dapat menghubunginya melalui website www.super.franky.yyy.com, dan dikarenakan pengunjung web server pasti akan bingung dengan randomnya images yang ada, maka Franky juga meminta untuk mengganti request gambar yang memiliki substring “franky” akan diarahkan menuju franky.png. Maka bantulah Luffy untuk membuat konfigurasi dns dan web server ini!
