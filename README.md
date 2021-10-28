@@ -1,5 +1,12 @@
 # Jarkom-Modul-2-C13-2021
 
+## Anggota Kelompok :
+Anggota | NRP
+--------|-------------
+M. Auliya Mirzaq R. | 05111940000065
+M. Akmal Joedhiawan | 05111940000125
+M. Arsyad Ardiansyah | 05111940000228
+
 ## Soal
 Luffy adalah seorang yang akan jadi Raja Bajak Laut. Demi membuat Luffy menjadi Raja Bajak Laut, Nami ingin membuat sebuah peta, bantu Nami untuk membuat peta berikut: 
 
