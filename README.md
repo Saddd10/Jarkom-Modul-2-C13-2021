@@ -232,3 +232,14 @@ Setting neetwork configuration sesuai dengan Prefix IP dari kelompok C13 yaitu `
 
 ## Soal 17
 ##### Dikarenakan Franky juga ingin mengajak temannya untuk dapat menghubunginya melalui website www.super.franky.yyy.com, dan dikarenakan pengunjung web server pasti akan bingung dengan randomnya images yang ada, maka Franky juga meminta untuk mengganti request gambar yang memiliki substring “franky” akan diarahkan menuju franky.png. Maka bantulah Luffy untuk membuat konfigurasi dns dan web server ini!
+
+#### Node Skypie
+- Buat file ```.htaccess``` ke dalam direktori ```/var/www/super.franky.C13.com``` lalu tambahkan seperti gambar dibawah ini.
+- Restart Apache2.
+- Kemudian kita perlu menambahkan command pada ```/etc/apache2/sites-available/super.franky.C13.com``` agar ```.htaccess``` yang telah dibuat dapat berjalan dengan menambahkan seperti gambar dibawah ini.
+- Restart Apache2.
+
+#### Node Loguetown/Alabasta
+- Ketika mengakses ```super.franky.C13.com/public/images/franky.png``` akan tetap menuju website ```super.franky.C13.com/public/images/franky.png```.
+- Ketika mengakses ```super.franky.C13.com/public/images/not-franky.jpg``` akan diarahkan menuju website ```super.franky.C13.com/public/images/franky.png``` karena memiliki kata franky didalamnya.
+- - Ketika mengakses ```super.franky.C13.com/public/images/car.jpg``` akan tetap menuju website ```super.franky.C13.com/public/images/car.jpg``` karena tidak memiliki kata franky didalamnya.
