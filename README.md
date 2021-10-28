@@ -242,4 +242,4 @@ Setting neetwork configuration sesuai dengan Prefix IP dari kelompok C13 yaitu `
 #### Node Loguetown/Alabasta
 - Ketika mengakses ```super.franky.C13.com/public/images/franky.png``` akan tetap menuju website ```super.franky.C13.com/public/images/franky.png```.
 - Ketika mengakses ```super.franky.C13.com/public/images/not-franky.jpg``` akan diarahkan menuju website ```super.franky.C13.com/public/images/franky.png``` karena memiliki kata franky didalamnya.
-- - Ketika mengakses ```super.franky.C13.com/public/images/car.jpg``` akan tetap menuju website ```super.franky.C13.com/public/images/car.jpg``` karena tidak memiliki kata franky didalamnya.
+- Ketika mengakses ```super.franky.C13.com/public/images/car.jpg``` akan tetap menuju website ```super.franky.C13.com/public/images/car.jpg``` karena tidak memiliki kata franky didalamnya.
