@@ -110,6 +110,7 @@ Setting neetwork configuration sesuai dengan Prefix IP dari kelompok C13 yaitu `
 #### Node Water7
 - Edit file ```named.conf.options``` dengan perintah ```vim /etc/bind/named.conf.options```.
 - Comment pada baris ```dnssec-validation auto;``` dan menambahkan baris berikut ```allow-query{any;};``` dibawahnya.
+
   ![image](https://github.com/Saddd10/Jarkom-Modul-2-C13-2021/blob/main/image/6d.png)
 - Edit file ```named.conf.local``` dengan perintah ```/etc/bind/named.conf.local``` lalu ubah konfigurasi seperti gambar dibawah ini.
   ![image](https://github.com/Saddd10/Jarkom-Modul-2-C13-2021/blob/main/image/6e.png)
@@ -142,6 +143,7 @@ Setting neetwork configuration sesuai dengan Prefix IP dari kelompok C13 yaitu `
 - Install Apache2 dan PHP dengan perintah ```apt-get install apache2``` dan ```apt-get install php```
 - Pindah ke direktori ```/etc/apache2/sites-available``` untuk membuat web server baru dengan nama ```franky.C13.com```.
 - Edit file default pada direktori ```/etc/apache2/sites-available``` dengan mengubah ```DocumentRoot``` dan menambahkan ```ServerAlias``` dan ```ServerName```.
+
   ![image](https://github.com/Saddd10/Jarkom-Modul-2-C13-2021/blob/main/image/8a.png)
 - Pindah direktori ke ```/var/www/``` lalu download file yang akan ditampilkan dengan cara ```wget [link download]```, sebelumnya install dahulu ```apt-get install wget```.
 - Unzip file yang telah didownload dengan perintah ```unzip franky.zip```, sebelumnya install dahulu ```apt-get install unzip```.
