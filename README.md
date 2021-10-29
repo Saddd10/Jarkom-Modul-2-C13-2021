@@ -198,12 +198,12 @@ Jika berhasil maka node sudah terhubung dengan internet.
 #### Node EniesLobby
 
 - Edit file `/etc/bind/kaizoku/franky.C13.com` dengan perintah `vim /etc/bind/kaizoku/franky.C13.com` lalu ubah konfigurasi seperti gambar dibawah ini.
-  ![image](https://github.com/Saddd10/Jarkom-Modul-2-C13-2021/blob/main/image/6a.png)
+  ![image](./image/6a.png)
 - Edit file `named.conf.options` dengan perintah `vim /etc/bind/named.conf.options`.
 - Comment pada baris `dnssec-validation auto;` dan menambahkan baris berikut `allow-query{any;};` dibawahnya.
-  ![image](https://github.com/Saddd10/Jarkom-Modul-2-C13-2021/blob/main/image/6b.png)
+  ![image](./image/6b.png)
 - Edit file `named.conf.local` dengan perintah `vim /etc/bind/named.conf.local` lalu ubah konfigurasi seperti gambar dibawah ini.
-  ![image](https://github.com/Saddd10/Jarkom-Modul-2-C13-2021/blob/main/image/6c.png)
+  ![image](./image/6c.png)
 - Restart bind9.
 
 #### Node Water7
@@ -211,19 +211,19 @@ Jika berhasil maka node sudah terhubung dengan internet.
 - Edit file `named.conf.options` dengan perintah `vim /etc/bind/named.conf.options`.
 - Comment pada baris `dnssec-validation auto;` dan menambahkan baris berikut `allow-query{any;};` dibawahnya.
 
-  ![image](https://github.com/Saddd10/Jarkom-Modul-2-C13-2021/blob/main/image/6d.png)
+  ![image](./image/6d.png)
 
 - Edit file `named.conf.local` dengan perintah `/etc/bind/named.conf.local` lalu ubah konfigurasi seperti gambar dibawah ini.
-  ![image](https://github.com/Saddd10/Jarkom-Modul-2-C13-2021/blob/main/image/6e.png)
+  ![image](./image/6e.png)
 - Membuat direktori baru dengan nama sesuai yang akan didelegasikan, lalu copy `db.local` ke direktori yang baru dibuat dan mengubah namanya menjadi `mecha.franky.C13.com` dengan perintah `mkdir sunnygo` dan `cp /etc/bind/db.local /etc/bind/sunnygo/mecha.franky.C13.com`.
 - Edit file `mecha.franky.C13.com` lalu ubah konfigurasi seperti gambar dibawah ini.
-  ![image](https://github.com/Saddd10/Jarkom-Modul-2-C13-2021/blob/main/image/6f.png)
+  ![image](./image/6f.png)
 - Restart bind9.
 
 #### Node Loguetown/Alabasta
 
 - cek apakah konfigurasi berhasil dengan `ping mecha.franky.C13.com`
-  ![image](https://github.com/Saddd10/Jarkom-Modul-2-C13-2021/blob/main/image/6g.png)
+  ![image](./image/6g.png)
 
 ## Soal 7
 
@@ -232,13 +232,13 @@ Jika berhasil maka node sudah terhubung dengan internet.
 #### Node Water7
 
 - Edit file `/etc/bind/sunnygo/mecha.franky.C13.com` dengan perintah `vim /etc/bind/sunnygo/mecha.franky.C13.com` lalu ubah konfigurasi seperti gambar dibawah ini.
-  ![image](https://github.com/Saddd10/Jarkom-Modul-2-C13-2021/blob/main/image/7a.png)
+  ![image](./image/7a.png)
 - Restart bind9.
 
 #### Node Loguetown/Alabasta
 
 - Cek apakah konfigurasi berhasil dengan `ping general.mecha.franky.C13.com`
-  ![image](https://github.com/Saddd10/Jarkom-Modul-2-C13-2021/blob/main/image/7b.png)
+  ![image](./image/7b.png)
 
 ## Soal 8
 
@@ -250,12 +250,12 @@ Jika berhasil maka node sudah terhubung dengan internet.
 - Pindah ke direktori `/etc/apache2/sites-available` untuk membuat web server baru dengan nama `franky.C13.com`.
 - Edit file default pada direktori `/etc/apache2/sites-available` dengan mengubah `DocumentRoot` dan menambahkan `ServerAlias` dan `ServerName`.
 
-  ![image](https://github.com/Saddd10/Jarkom-Modul-2-C13-2021/blob/main/image/8a.png)
+  ![image](./image/8a.png)
 
 - Pindah direktori ke `/var/www/` lalu download file yang akan ditampilkan dengan cara `wget [link download]`, sebelumnya install dahulu `apt-get install wget`.
 - Unzip file yang telah didownload dengan perintah `unzip franky.zip`, sebelumnya install dahulu `apt-get install unzip`.
 - Setelah itu file yang telah di unzip dipindahkan ke direktori yang telah ditetapkan yaitu `/var/www/franky.C13.com/`.
-  ![image](https://github.com/Saddd10/Jarkom-Modul-2-C13-2021/blob/main/image/8b.png)
+  ![image](./image/8b.png)
 - Mengaktifkan konfigurasi website dengan perintah `a2ensite franky.C13.com`.
 - Restart Apache2
 
@@ -263,7 +263,7 @@ Jika berhasil maka node sudah terhubung dengan internet.
 
 - Install lynx untuk menampilkan isi dari file yang telah didownload dengan cara `apt-get install lynx`
 - Ketik `lynx www.franky.C13.com` untuk mengakses web tersebut.
-  ![image](https://github.com/Saddd10/Jarkom-Modul-2-C13-2021/blob/main/image/8c.png)
+  ![image](./image/8c.png)
 
 ## Soal 9
 
@@ -272,14 +272,14 @@ Jika berhasil maka node sudah terhubung dengan internet.
 #### Node Skypie
 
 - Edit file `default` pada direktori `franky.C13.com` lalu tambahkan `Alias` seperti gambar dibawah.  
-  ![image](https://github.com/Saddd10/Jarkom-Modul-2-C13-2021/blob/main/image/9a.png)
+  ![image](./image/9a.png)
 - Mengaktifkan konfigurasi website dengan perintah `a2ensite franky.C13.com`.
 - Restart Apache2.
 
 #### Node Loguetown/Alabasta
 
 - Ketik `lynx www.franky.C13.com/home` untuk mengakses web tersebut.
-  ![image](https://github.com/Saddd10/Jarkom-Modul-2-C13-2021/blob/main/image/9b.png)
+  ![image](./image/9b.png)
 
 ## Soal 10
 
@@ -289,18 +289,18 @@ Jika berhasil maka node sudah terhubung dengan internet.
 
 - Copy file default menjadi file baru dengan nama sesuai domain pada soal `super.franky.C13.com` di direktori `/etc/apache2/sites-available`
 - Edit file `super.franky.C13.com` pada direktori `/etc/apache2/sites-available` dengan mengubah `DocumentRoot` dan menambahkan `ServerAlias` dan `ServerName`.
-  ![image](https://github.com/Saddd10/Jarkom-Modul-2-C13-2021/blob/main/image/10a.png)
+  ![image](./image/10a.png)
 - Pindah direktori ke `/var/www/` lalu download file yang akan ditampilkan dengan cara `wget [link download]`.
 - Unzip file yang telah didownload dengan perintah `unzip super.franky.zip`.
 - Setelah itu file yang telah di unzip dipindahkan ke direktori yang telah ditetapkan yaitu `/var/www/super.franky.C13.com/`.
-  ![image](https://github.com/Saddd10/Jarkom-Modul-2-C13-2021/blob/main/image/10b.png)
+  ![image](./image/10b.png)
 - Mengaktifkan konfigurasi website dengan perintah `a2ensite super.franky.C13.com`.
 - Restart Apache2
 
 #### Node Loguetown/Alabasta
 
 - Ketik `lynx www.super.franky.C13.com` untuk mengakses web tersebut.
-  ![image](https://github.com/Saddd10/Jarkom-Modul-2-C13-2021/blob/main/image/10c.png)
+  ![image](./image/10c.png)
 
 ## Soal 11
 
@@ -309,7 +309,7 @@ Jika berhasil maka node sudah terhubung dengan internet.
 #### Node Skypie
 
 - Edit file `super.franky.C13.com` pada direktori `/etc/apache2/sites-available` dengan menambahkan sesuai gambar dibawah.
-  ![image](https://github.com/Saddd10/Jarkom-Modul-2-C13-2021/blob/main/image/11a.png)
+  ![image](./image/11a.png)
 - Mengaktifkan konfigurasi website dengan perintah `a2ensite super.franky.C13.com`.
 - Restart Apache2.
 
@@ -317,11 +317,11 @@ Jika berhasil maka node sudah terhubung dengan internet.
 
 - Cek apakah directory listing berhasil dengan cara akses link `www.super.franky.C13.com/public`.
 - super.franky.C13.com/public/css
-  ![image](https://github.com/Saddd10/Jarkom-Modul-2-C13-2021/blob/main/image/11b.png)
+  ![image](./image/11b.png)
 - super.franky.C13.com/public/images
-  ![image](https://github.com/Saddd10/Jarkom-Modul-2-C13-2021/blob/main/image/11c.png)
+  ![image](./image/11c.png)
 - super.franky.C13.com/public/js
-  ![image](https://github.com/Saddd10/Jarkom-Modul-2-C13-2021/blob/main/image/11d.png)
+  ![image](./image/11d.png)
 
 ## Soal 12
 
