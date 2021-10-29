@@ -343,13 +343,20 @@ Jika berhasil maka node sudah terhubung dengan internet.
 
 #### Node Skypie
 
-- Edit file `super.franky.C13.com` pada direktori `/etc/apache2/sites-available` dengan menambahkan sesuai gambar dibawah.
-- Mengaktifkan konfigurasi website dengan perintah `a2ensite super.franky.C13.com`.
-- Restart Apache2.
+- Edit file `super.franky.C13.com` pada direktori `/etc/apache2/sites-available` dengan menambahkan sebuah alias berikut `Alias "/js" "/var/www/super.franky.C13.com/public/js"`
+
+  ![img](./image/13a.png)
+
+- Lalu aktifkan perubahan yang dilakukan dengan restart Apache 2 dengan perintah :
+  ```
+  service apache2 restart
+  ```
 
 #### Node Loguetown/Alabasta
 
-- Ketika mengakses alamat `www.super.franky.yyy.com/public/js` akan diarahkan ke alamat `www.super.franky.yyy.com/js`
+- Ketika mengakses alamat `www.super.franky.yyy.com/js` akan diarahkan ke alamat `www.super.franky.yyy.com/public/js`
+
+  ![img](./image/13b.png)
 
 ## Soal 14
 
