@@ -330,8 +330,12 @@ Jika berhasil maka node sudah terhubung dengan internet.
 #### Node Skypie
 
 - Edit file `super.franky.C13.com` pada direktori `/etc/apache2/sites-available` dengan menambahkan `ErrorDocument` sesuai gambar dibawah.
-- Mengaktifkan konfigurasi website dengan perintah `a2ensite super.franky.C13.com`.
-- Restart Apache2.
+  ![img](./image/12a.png)
+
+- Lalu aktifkan perubahan yang dilakukan dengan restart Apache 2 dengan perintah :
+  ```
+  service apache2 restart
+  ```
 
 ## Soal 13
 
