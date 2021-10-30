@@ -497,12 +497,52 @@ Jika berhasil maka node sudah terhubung dengan internet.
 #### Node Skypie
 
 - Buat file `.htaccess` ke dalam direktori `/var/www/super.franky.C13.com` lalu tambahkan seperti gambar dibawah ini.
-- Restart Apache2.
-- Kemudian kita perlu menambahkan command pada `/etc/apache2/sites-available/super.franky.C13.com` agar `.htaccess` yang telah dibuat dapat berjalan dengan menambahkan seperti gambar dibawah ini.
-- Restart Apache2.
+
+  ![img](./image/17a.png)
+
+- Kemudian kita perlu menambahkan command pada `/etc/apache2/sites-available/super.franky.C13.com` agar `.htaccess` yang telah dibuat dapat berjalan dengan menambahkan baris berikut
+
+  ```
+  <Directory /var/www/super.franky.C13.com/>
+    Options Indexes FollowSymLinks
+    AllowOverride All
+    Order allow,deny
+    allow from all
+  </Directory>
+  ```
+
+  ![img](./image/17b.png)
+
+- Kemudian aktifkan modul rewrite agar perubahan sebelumnya dapat bekerja
+
+  ```
+  a2enmod rewrite
+  ```
+
+- Lalu aktifkan perubahan yang dilakukan dengan restart Apache 2 dengan perintah :
+  ```
+  service apache2 restart
+  ```
 
 #### Node Loguetown/Alabasta
 
-- Ketika mengakses `super.franky.C13.com/public/images/franky.png` akan tetap menuju website `super.franky.C13.com/public/images/franky.png`.
-- Ketika mengakses `super.franky.C13.com/public/images/not-franky.jpg` akan diarahkan menuju website `super.franky.C13.com/public/images/franky.png` karena memiliki kata franky didalamnya.
-- Ketika mengakses `super.franky.C13.com/public/images/car.jpg` akan tetap menuju website `super.franky.C13.com/public/images/car.jpg` karena tidak memiliki kata franky didalamnya.
+Karena pada terminal tidak dapat melihat sebuah gambar, maka untuk membuktikan apakah saat membuka gambar yang memiliki substring `franky` akan diarahkan ke gambar `franky.png`. Kita dapat mengeceknya dengan menggunakan ukuran gambar.
+
+- Pertama kita akan mengecek ukuran gambar `franky.png` sebagai pembanding nantinya. Dapat dilihat bahwa gambar tersebut memiliki ukuran 656785 bytes
+  ![img](./image/17c.png)
+
+- Ketika mengakses `super.franky.C13.com/public/images/not-franky.jpg` akan diarahkan menuju website `super.franky.C13.com/public/images/franky.png` karena memiliki substring franky didalamnya. Kita akan download untuk mengecek ukurannya
+
+  ![img](./image/17d.png)
+
+- Jika benar maka gambar yang didownload yaitu `not-franky.png` akan memiliki ukuran yang sama dengan gambar `franky.png` yaitu 656785 bytes. Untuk ukuran gambar `not-franky.png` sebenarnya adalah 22839 bytes
+
+  ![img](./image/17e.png)
+
+- Ketika mengakses `super.franky.C13.com/public/images/car.jpg` akan tetap menuju website `super.franky.C13.com/public/images/car.jpg` karena tidak memiliki kata franky didalamnya. Kita akan download juga untuk cek ukuran gambar tersebut
+
+  ![img](./image/17f.png)
+
+- Dapat dilihat untuk ukuran gambar `car.jpg` tetap memiliki ukuran aslinya yaitu 89595 bytes.
+
+  ![img](./image/17g.png)
