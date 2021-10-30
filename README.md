@@ -305,7 +305,7 @@ Setelah melakukan konfigurasi server, maka dilakukan konfigurasi Webserver. Pert
 
   ![image](./image/8a.png)
 
-- Pindah direktori ke `/var/www/` lalu download file yang akan ditampilkan dengan cara `wget [link download]`, sebelumnya install dahulu `apt-get install wget`.
+- Pindah direktori ke `/var/www/` lalu download file yang akan ditampilkan dengan cara `wget https://github.com/FeinardSlim/Praktikum-Modul-2-Jarkom/raw/main/franky.zip`, sebelumnya install dahulu `apt-get install wget`.
 - Unzip file yang telah didownload dengan perintah `unzip franky.zip`, sebelumnya install dahulu `apt-get install unzip`.
 - Setelah itu file yang telah di unzip dipindahkan ke direktori yang telah ditetapkan yaitu `/var/www/franky.C13.com/`.
   ![image](./image/8b.png)
@@ -343,7 +343,7 @@ Setelah itu, pada subdomain www.super.franky.yyy.com, Luffy membutuhkan penyimpa
 - Copy file default menjadi file baru dengan nama sesuai domain pada soal `super.franky.C13.com` di direktori `/etc/apache2/sites-available`
 - Edit file `super.franky.C13.com` pada direktori `/etc/apache2/sites-available` dengan mengubah `DocumentRoot` dan menambahkan `ServerAlias` dan `ServerName`.
   ![image](./image/10a.png)
-- Pindah direktori ke `/var/www/` lalu download file yang akan ditampilkan dengan cara `wget [link download]`.
+- Pindah direktori ke `/var/www/` lalu download file yang akan ditampilkan dengan cara `wget https://github.com/FeinardSlim/Praktikum-Modul-2-Jarkom/raw/main/super.franky.zip`.
 - Unzip file yang telah didownload dengan perintah `unzip super.franky.zip`.
 - Setelah itu file yang telah di unzip dipindahkan ke direktori yang telah ditetapkan yaitu `/var/www/super.franky.C13.com/`.
   ![image](./image/10b.png)
