@@ -475,13 +475,20 @@ Jika berhasil maka node sudah terhubung dengan internet.
 
 #### Node Skypie
 
-- Edit file default pada direktori `/etc/apache2/sites-available` dengan mengarahkan `DocumentRoot` ke `/var/www/franky.C13.com` seperti gambar dibawah ini.
-- Mengaktifkan konfigurasi website dengan perintah `a2ensite franky.C13.com`.
-- Restart Apache2.
+- Edit file default `000-default.conf` pada direktori `/etc/apache2/sites-available` dengan mengarahkan `DocumentRoot` ke `/var/www/franky.C13.com` seperti gambar dibawah ini.
+
+  ![img](./image/16a.png)
+
+- Lalu aktifkan perubahan yang dilakukan dengan restart Apache 2 dengan perintah :
+  ```
+  service apache2 restart
+  ```
 
 #### Node Loguetown/Alabasta
 
-- Ketika mengakses `192.190.2.2` akan diarahkan menuju website `franky.C13.com`
+- Ketika mengakses `192.190.2.4` akan diarahkan menuju website `franky.C13.com`
+  ![img](./image/16b.png)
+  ![img](./image/16c.png)
 
 ## Soal 17
 
