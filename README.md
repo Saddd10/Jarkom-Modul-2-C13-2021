@@ -436,6 +436,39 @@ Jika berhasil maka node sudah terhubung dengan internet.
 
 ##### Dengan authentikasi username luffy dan password onepiece dan file di /var/www/general.mecha.franky.yyy.
 
+#### Node Skypie
+
+- Edit file `general.mecha.franky.C13.com` pada direktori `/etc/apache2/sites-available` dan tambahkan baris berikut pada kedua `VirtualHost`
+
+  ```
+  <Directory /var/www/general.mecha.franky.C13.com>
+    AuthType Basic
+    AuthName "Private!"
+    AuthUserFile "/var/www/general.mecha.franky.C13.com/.htpasswd"
+    require valid-user
+  </Directory>
+  ```
+
+  ![img](./image/15a.png)
+
+- Kemudian buat file `htpasswd` untuk _authentication_ `/var/www/general.mecha.franky.C13.com/.htpasswd` dengan perintah berikut
+
+  ```
+  htpasswd -cb /var/www/general.mecha.franky.C13.com/.htpasswd luffy onepiece
+  ```
+
+- Lalu aktifkan perubahan yang dilakukan dengan restart Apache 2 dengan perintah :
+  ```
+  service apache2 restart
+  ```
+
+#### Node Skypie
+
+- Lalu cek apakah basic authentication sudah berhasil dibuat dengan akses `general.mecha.franky.C13.com`
+  ![img](./image/15b.png)
+  ![img](./image/15c.png)
+  ![img](./image/15d.png)
+
 ## Soal 16
 
 ##### Dan setiap kali mengakses IP EniesLobby akan diahlikan secara otomatis ke www.franky.yyy.com.
