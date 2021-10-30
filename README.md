@@ -364,19 +364,73 @@ Jika berhasil maka node sudah terhubung dengan internet.
 
 #### Node Skypie
 
-- Copy file default menjadi file baru dengan nama sesuai domain pada soal `general.mecha.franky.C13.com` di direktori `/etc/apache2/sites-available`.
-- Edit file `general.mecha.franky.C13.com` pada direktori `/etc/apache2/sites-available` dengan mengubah `VirtualHost` dan `DocumentRoot` serta menambahkan `ServerAlias` dan `ServerName`.
-- Membuat folder baru bernama `general.mecha.franky.C13.com` pada direktori `/var/www/`
-- Pindah direktori ke `/var/www/` lalu download file yang akan ditampilkan dengan cara `wget [link download]`.
+- Copy file default `000-default.conf` menjadi file baru dengan nama sesuai domain pada soal `general.mecha.franky.C13.com.conf` di direktori `/etc/apache2/sites-available`.
+
+- Edit file `general.mecha.franky.C13.com` pada direktori `/etc/apache2/sites-available` dengan mengubah `VirtualHost` dan `DocumentRoot` serta menambahkan `ServerAlias` dan `ServerName` menjadi seperti ini
+
+  ```
+  <VirtualHost *:15000>
+
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/general.mecha.franky.C13.com
+        ServerName general.mecha.franky.C13.com
+        ServerAlias www.general.mecha.franky.C13.com
+
+        <Directory /var/www/general.mecha.franky.C13.com>
+                AuthType Basic
+                AuthName "Private!"
+                AuthUserFile "/var/www/general.mecha.franky.C13.com/.htpasswd"
+                require valid-user
+        </Directory>
+
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+  </VirtualHost>
+  <VirtualHost *:15500>
+
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/general.mecha.franky.C13.com
+        ServerName general.mecha.franky.C13.com
+        ServerAlias www.general.mecha.franky.C13.com
+
+        <Directory /var/www/general.mecha.franky.C13.com>
+                AuthType Basic
+                AuthName "Private!"
+                AuthUserFile "/var/www/general.mecha.franky.C13.com/.htpasswd"
+                require valid-user
+        </Directory>
+
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+  </VirtualHost>
+  ```
+
+  ![img](./image/14a.png)
+
+- Kemudian aktifkan poert 15000 dan 15500 dengan menambahkan listen port pada file `/etc/apache2/ports.conf`
+
+  ![img](./image/14b.png)
+
+- Pindah direktori ke `/var/www/` lalu download file yang akan ditampilkan dengan cara `wget https://github.com/FeinardSlim/Praktikum-Modul-2-Jarkom/raw/main/general.mecha.franky.zip`.
+
 - Unzip file yang telah didownload dengan perintah `unzip general.mecha.franky.zip`.
-- Setelah itu file yang telah di unzip dipindahkan ke direktori yang telah ditetapkan yaitu `/var/www/general.mecha.franky.C13.com/`.
-- Mengaktifkan port 15000 dan 15500 pada file `/etc/apache2/ports.conf`.
+
+- Setelah itu rename folder yang telah di unzip sesuai dengan direktori yang telah ditetapkan yaitu `/var/www/general.mecha.franky.C13.com/`.
+
 - Mengaktifkan konfigurasi website dengan perintah `a2ensite general.mecha.franky.C13.com`.
-- Restart Apache2.
+
+- Lalu aktifkan perubahan yang dilakukan dengan restart Apache 2 dengan perintah :
+  ```
+  service apache2 restart
+  ```
 
 #### Node Loguetown/Alabasta
 
 - Cek konfigurasi apakah telah berhasil dengan cara `lynx general.mecha.franky.C13.com.pw:15000` dan `lynx general.mecha.franky.C13.com.pw:15500`
+
+  ![img](./image/14c.png)
 
 ## Soal 15
 
