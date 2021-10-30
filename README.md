@@ -426,6 +426,11 @@ Tidak hanya itu, Luffy juga menyiapkan error file 404.html pada folder /errors u
   ```
   service apache2 restart
   ```
+  
+#### Node Loguetown/Alabasta
+
+- Ketika salah mengakses alamat akan diarahkan ke alamat eror.html seperti gambar dibawah ini
+  ![img](./image/12b.png)
 
 ## Soal 13
 
