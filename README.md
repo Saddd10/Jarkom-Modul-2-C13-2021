@@ -518,7 +518,7 @@ Dan Luffy meminta untuk web www.general.mecha.franky.yyy.com hanya bisa diakses 
 
 #### Node Loguetown/Alabasta
 
-- Cek konfigurasi apakah telah berhasil dengan cara `lynx general.mecha.franky.C13.com.pw:15000` dan `lynx general.mecha.franky.C13.com.pw:15500`
+- Cek konfigurasi apakah telah berhasil dengan cara `lynx general.mecha.franky.C13.com:15000` dan `lynx general.mecha.franky.C13.com:15500`
 
   ![img](./image/14c.png)
 
