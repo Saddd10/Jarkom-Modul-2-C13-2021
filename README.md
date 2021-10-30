@@ -157,7 +157,7 @@ Luffy ingin menghubungi Franky yang berada di EniesLobby dengan denden mushi. Ka
 
 #### Node Loguetown/Alabasta
 
-- Ubah settingan nameserver pada file `/etc/resolv.conf` sesuai gambar dibawah dengan IP Enieslobby
+- Ubah settingan nameserver pada file `/etc/resolv.conf` seperti di bawah ini
   ```
   nameserver 192.190.2.2
   ```
