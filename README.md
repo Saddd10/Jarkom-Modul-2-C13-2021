@@ -195,15 +195,33 @@ Buat juga reverse domain untuk domain utama.
 #### Node EniesLobby
 
 - Edit file `named.conf.local` dengan perintah `vim /etc/bind/named.conf.local` lalu ubah konfigurasi seperti gambar dibawah ini.
+
+  ```
+    zone "2.190.192.in-addr.arpa" {
+      type master;
+      file "/etc/bind/kaizoku/2.190.192.in-addr.arpa";
+    };
+  ```
+
+  ![img](./image/4a.png)
+
 - Copy file `db.local` ke dalam folder kaizoku yang telah dibuat dan ubah namanya menjadi `2.190.192.in-addr.arpa` dengan cara mengetikkan perintah `cp /etc/bind/db.local /etc/bind/kaizoku/2.190.192.in-addr.arpa`. `2.190.192` merupakan 3 byte pertama yang dibalik dari IP Address Enieslobby.
+
 - Kemudian edit file `2.190.192.in-addr.arpa` dan ubah konfigurasinya menjadi seperti gambar dibawah.
-- Restart bind9.
+
+  ![img](./image/4b.png)
+
+- Restart service bind9 dengan perintah `service bind9 restart`
 
 #### Node Loguetown/Alabasta
 
-- Melakukan update dengan perintah `apt-get update`, sebelumnya mengubah nameserver ke default terlebih dahulu agar update dapat dijalanakan) kemudian mengembalikan ke IP EniesLobby.
+- Melakukan update dengan perintah `apt-get update`, sebelumnya mengubah nameserver ke default terlebih dahulu agar update dapat dijalanakan kemudian mengembalikan ke IP EniesLobby.
+
 - Install `dnsutils` dengan perintah `apt-get install dnsutils`
+
 - Mencoba reverse dns dengan perintah `host -t PTR 192.190.2.2`
+
+  ![img](./image/4c.png)
 
 ## Soal 5
 
