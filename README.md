@@ -171,12 +171,22 @@ Setelah itu buat subdomain super.franky.yyy.com dengan alias www.super.franky.yy
 
 #### Node EniesLobby
 
-- Ketik `vim /etc/bind/kaizoku/franky.C13.com` untuk mengedit file `/etc/bind/kaizoku/franky.C13.com`, lalu ubah konfigurasi menjadi gambar dibawah dan isi IP dengan IP Skypie `192.190.2.4`.
+- Ketik `vim /etc/bind/kaizoku/franky.C13.com` untuk mengedit file `/etc/bind/kaizoku/franky.C13.com`, lalu tambahkan beris berikut
+
+  ```
+  super       IN      A       192.190.2.4
+  www.super   IN      CNAME   super
+  ```
+
+  ![img](./image/3a.png)
+
 - Restart service bind9 dengan perintah `service bind9 restart`
 
 #### Node Loguetown/Alabasta
 
 - Cek apakah subdomain `super.franky.C13.com` beserta alias `www.super.franky.C13.com` bisa diakses dengan `ping www.super.franky.C13.com`
+
+  ![img](./image/3b.png)
 
 ## Soal 4
 
