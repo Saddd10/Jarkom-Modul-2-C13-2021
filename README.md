@@ -128,17 +128,42 @@ Luffy ingin menghubungi Franky yang berada di EniesLobby dengan denden mushi. Ka
 #### Node EniesLobby
 
 - Lakukan update dengan `apt-get update`
+
 - Install bind9 dengan perintah `apt-get install bind9 -y`
-- Edit file dengan perintah `vim /etc/bind/named.conf.local` lalu tambahkan kode berikut serta memberi alias `www`.
+
+- Edit file dengan perintah `vim /etc/bind/named.conf.local` lalu tambahkan kode berikut.
+
+  ```
+  zone "franky.C13.com" {
+    type master;
+    file "/etc/bind/kaizoku/franky.C13.com";
+  };
+  ```
+
+  ![img](./image/2a.png)
+
 - Membuat direktori baru sesuai dengan soal dengan cara `mkdir /etc/bind/kaizoku`
+
 - Copy file `db.local` ke direktori yang baru dibuat dan ubah namanya sesuai domain yang diinginkan `cp /etc/bind/db.local /etc/bind/kaizoku/franky.C13.com`.
-- Edit file `franky.C13.com` dengan perintah `vim /etc/bind/kaizoku/franky.C13.com`.
-- Restart bind9.
+
+- Edit file `franky.C13.com` dengan perintah `vim /etc/bind/kaizoku/franky.C13.com` menjadi seperti berikut
+
+  ![img](./image/2b.png)
+
+- Lalu aktifkan perubahan yang dilakukan dengan restart bind9 dengan perintah :
+  ```
+  service bind9 restart
+  ```
 
 #### Node Loguetown/Alabasta
 
-- Ubah settingan nameserver pada file `/etc/resolv.conf` sesuai gambar dibawah ini.
+- Ubah settingan nameserver pada file `/etc/resolv.conf` sesuai gambar dibawah dengan IP Enieslobby
+  ```
+  nameserver 192.190.2.2
+  ```
 - Cek domain `franky.C13.com` dengan perintah `ping franky.C13.com`.
+
+  ![img](./image/2c.png)
 
 ## Soal 3
 
