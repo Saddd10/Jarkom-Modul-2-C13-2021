@@ -230,19 +230,55 @@ Supaya tetap bisa menghubungi Franky jika server EniesLobby rusak, maka buat Wat
 #### Node EniesLobby
 
 - Edit file `named.conf.local` dengan perintah `vim /etc/bind/named.conf.local` lalu ubah konfigurasi seperti gambar dibawah ini.
-- Restart bind9
+
+  ```
+    zone "franky.C13.com" {
+      type master;
+      notify yes;
+      also-notify { 192.190.2.3; }; // Masukan IP Water7 tanpa tanda petik
+      allow-transfer { 192.190.2.3; }; // Masukan IP Water7 tanpa tanda petik
+      file "/etc/bind/kaizoku/franky.C13.com";
+    };
+
+    zone "2.190.192.in-addr.arpa" {
+        type master;
+        file "/etc/bind/kaizoku/2.190.192.in-addr.arpa";
+    };
+  ```
+
+  ![img](./image/5a.png)
+
+- Restart service bind9 dengan perintah `service bind9 restart`
 
 #### Node Water7
 
 - Melakukan update `apt-get update` dan install bind9 `apt-get install bind9 -y`
+
 - Edit file `named.conf.local` dengan perintah `vim /etc/bind/named.conf.local` lalu ubah konfigurasi seperti gambar dibawah ini.
-- Restart bind9.
+
+  ```
+    zone "franky.C13.com" {
+      type slave;
+      masters { 192.190.2.2; }; // Masukan IP EniesLobby tanpa tanda petik
+      file "/var/lib/bind/franky.C13.com";
+    };
+  ```
+
+  ![img](./image/5b.png)
+
+- Restart service bind9 dengan perintah `service bind9 restart`
+
 - Untuk cek apakah konfigurasi berhasil, maka bind9 pada node EniesLobby harus di stop dengan perintah `service bind9 stop`
+
+  ![img](./image/5c.png)
 
 #### Node Loguetown/Alabasta
 
 - Ubah nameserver pada file `/etc/bind/resolv.conf` yang mengarah ke IP Water7 dengan menambahkan `nameserver 192.190.2.3`
+
 - Cek apakah DNS Slave berhasil dengan `ping franky.C13.com`
+
+  ![img](./image/5d.png)
 
 ## Soal 6
 
